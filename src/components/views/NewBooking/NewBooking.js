@@ -1,7 +1,7 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 
-import styles from '../NewBooking/NewBooking.module.scss';
+import styles from './NewBooking.module.scss';
 
 const NewBooking = () => (
   <div className={styles.component}>

@@ -1,7 +1,7 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 
-import styles from '../Waiter/Waiter.module.scss';
+import styles from './Waiter.module.scss';
 
 import {Link, Route, Switch} from 'react-router-dom';
 

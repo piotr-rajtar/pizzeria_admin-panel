@@ -1,14 +1,14 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 
-import styles from '../Homepage/Homepage.module.scss';
+import styles from './Dashboard.module.scss';
 
-const Homepage = () => (
+const Dashboard = () => (
   <div className={styles.component}>
     <h2>
-      Homepage view
+      Dashboard view
     </h2>
   </div>
 );
 
-export default Homepage;
+export default Dashboard;

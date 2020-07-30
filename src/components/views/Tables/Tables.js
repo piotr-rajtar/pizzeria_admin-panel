@@ -1,7 +1,7 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 
-import styles from '../Tables/Tables.module.scss';
+import styles from './Tables.module.scss';
 
 import {Link, Route, Switch} from 'react-router-dom';
 

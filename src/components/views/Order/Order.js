@@ -2,7 +2,7 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
-import styles from '../Order/Order.module.scss';
+import styles from './Order.module.scss';
 
 const Order = () => {
   const { id } = useParams();

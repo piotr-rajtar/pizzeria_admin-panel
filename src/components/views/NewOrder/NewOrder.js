@@ -1,7 +1,7 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 
-import styles from '../NewOrder/NewOrder.module.scss';
+import styles from './NewOrder.module.scss';
 
 const NewOrder = () => (
   <div className={styles.component}>

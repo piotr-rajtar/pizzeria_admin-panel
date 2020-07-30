@@ -2,7 +2,7 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
-import styles from '../Event/Event.module.scss';
+import styles from './Event.module.scss';
 
 const Event = () => {
   const { id } = useParams();

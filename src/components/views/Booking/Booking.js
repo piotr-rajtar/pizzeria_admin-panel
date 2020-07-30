@@ -2,7 +2,7 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
-import styles from '../Booking/Booking.module.scss';
+import styles from './Booking.module.scss';
 
 const Booking = () => {
   const { id } = useParams();
