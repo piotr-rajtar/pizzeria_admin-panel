@@ -2,7 +2,6 @@ import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import MainLayout from '../src/components/layout/MainLayout/MainLayout';
-import PageNav from '../src/components/layout/PageNav/PageNav';
 
 import Homepage from '../src/components/views/Homepage/Homepage';
 import Kitchen from '../src/components/views/Kitchen/Kitchen';
@@ -14,7 +13,6 @@ const App = () => (
 
   <BrowserRouter>
     <MainLayout>
-      <PageNav />
       <Switch>
         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Homepage} />
         <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login} />
