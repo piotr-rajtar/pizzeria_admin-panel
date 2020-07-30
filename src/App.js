@@ -18,8 +18,8 @@ const App = () => (
       <Switch>
         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Homepage} />
         <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login} />
-        <Route exact path={`${process.env.PUBLIC_URL}/tables`} component={Tables} />
-        <Route exact path={`${process.env.PUBLIC_URL}/waiter`} component={Waiter} />
+        <Route path={`${process.env.PUBLIC_URL}/tables`} component={Tables} />
+        <Route path={`${process.env.PUBLIC_URL}/waiter`} component={Waiter} />
         <Route exact path={`${process.env.PUBLIC_URL}/kitchen`} component={Kitchen} />
       </Switch>
     </MainLayout>
