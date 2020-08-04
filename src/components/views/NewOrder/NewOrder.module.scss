@@ -1,5 +1,12 @@
 @import '../../../styles/settings.scss';
 
 .component {
+  margin-top: 50px;
   padding: $base-size;
+
+  .button {
+    margin: 10px auto 0 auto;
+  }
 }
+
+
