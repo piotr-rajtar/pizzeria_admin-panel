@@ -32,11 +32,6 @@ const demoOrder = [
 ];
 
 const Kitchen = () => {
-  const [checked, setChecked] = React.useState(true);
-
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
   return (
     <Paper className={styles.component}>
       <Table>
@@ -65,9 +60,7 @@ const Kitchen = () => {
                 {row.option}
               </TableCell>
               <TableCell>
-                <Checkbox
-                  color="primary"
-                />
+                <Checkbox color="primary" />
               </TableCell>
             </TableRow>
           ))}
