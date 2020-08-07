@@ -16,6 +16,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const reservations = [
   {hour: '10:00', table1: 'RESERVATION', table2: '', table3: 'EVENT', table4: '', table5: 'EVENT', table6: 'RESERVATION'},
@@ -90,6 +91,13 @@ const Tables = () => {
 
   return (
     <Paper className={styles.component}>
+      <form className={styles.datePicker} noValidate>
+        <TextField
+          id="date"
+          type="date"
+          defaultValue={new Date()}
+        />
+      </form>
       <Table>
         <TableHead>
           <TableRow>
