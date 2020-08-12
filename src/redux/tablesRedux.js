@@ -10,45 +10,42 @@ const reducerName = 'tables';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* action types */
-const FETCH_START = createActionName('FETCH_START');
-const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
-const FETCH_ERROR = createActionName('FETCH_ERROR');
-const CHANGE_STATUS = createActionName('CHANGE_STATUS');
+const START_GET_TABLES_DATA = createActionName('START_GET_TABLES_DATA');
+const GET_TABLES_DATA_SUCCESS = createActionName('GET_TABLES_DATA_SUCCESS');
+const GET_TABLES_DATA_ERROR = createActionName('GET_TABLES_DATA_ERROR');
+const CHANGE_TABLE_STATUS = createActionName('CHANGE_TABLE_STATUS');
 
 /* action creators */
-export const fetchStarted = payload => ({ payload, type: FETCH_START });
-export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
-export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-export const changeStatus = payload => ({payload, type: CHANGE_STATUS});
+export const startGetTablesData = payload => ({ payload, type: START_GET_TABLES_DATA });
+export const getTablesDataSuccess = payload => ({ payload, type: GET_TABLES_DATA_SUCCESS });
+export const getTablesDataError = payload => ({ payload, type: GET_TABLES_DATA_ERROR });
+export const changeTableStatus = payload => ({payload, type: CHANGE_TABLE_STATUS});
 
 /* thunk creators */
-export const fetchFromAPI = () => {
+export const getTablesDataFromAPI = () => {
   return (dispatch, getState) => {
-    dispatch(fetchStarted());
+    dispatch(startGetTablesData());
 
     Axios
       .get(`${api.url}/${api.tables}`)
       .then(res => {
-        dispatch(fetchSuccess(res.data));
+        dispatch(getTablesDataSuccess(res.data));
       })
       .catch(err => {
-        dispatch(fetchError(err.message || true));
+        dispatch(getTablesDataError(err.message || true));
       });
   };
 };
 
-export const fetchToAPI = (obj) => {
+export const sendStatusToAPI = (obj) => {
   return (dispatch, getState) => {
 
     Axios
-      .post(`${api.url}/${api.tables}`, {
-        id: obj.id,
+      .patch(`${api.url}/${api.tables}/${obj.id}`, {
         status: obj.status,
       })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
-        console.log(obj);
+        dispatch(changeTableStatus(res.data));
       });
   };
 };
@@ -56,7 +53,7 @@ export const fetchToAPI = (obj) => {
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
   switch (action.type) {
-    case FETCH_START: {
+    case START_GET_TABLES_DATA: {
       return {
         ...statePart,
         loading: {
@@ -65,7 +62,7 @@ export default function reducer(statePart = [], action = {}) {
         },
       };
     }
-    case FETCH_SUCCESS: {
+    case GET_TABLES_DATA_SUCCESS: {
       return {
         ...statePart,
         loading: {
@@ -75,7 +72,7 @@ export default function reducer(statePart = [], action = {}) {
         data: action.payload,
       };
     }
-    case FETCH_ERROR: {
+    case GET_TABLES_DATA_ERROR: {
       return {
         ...statePart,
         loading: {
@@ -84,12 +81,15 @@ export default function reducer(statePart = [], action = {}) {
         },
       };
     }
-    case CHANGE_STATUS: {
+    case CHANGE_TABLE_STATUS: {
       return {
         ...statePart,
         data: {
           ...statePart.data,
-          status: action.payload,
+          [action.payload.id]: {
+            ...statePart.data[action.payload.id],
+            status: action.payload.status,
+          },
         },
       };
     }
