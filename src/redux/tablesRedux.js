@@ -23,8 +23,8 @@ export const changeTableStatus = payload => ({payload, type: CHANGE_TABLE_STATUS
 
 /* thunk creators */
 export const getTablesDataFromAPI = () => {
-  return (dispatch, getState) => {
-    //dispatch(startGetTablesData());
+  return (dispatch) => {
+    dispatch(startGetTablesData());
 
     Axios
       .get(`${api.url}/${api.tables}`)
@@ -38,7 +38,7 @@ export const getTablesDataFromAPI = () => {
 };
 
 export const sendStatusToAPI = (obj) => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
 
     Axios
       .patch(`${api.url}/${api.tables}/${obj.id}`, {
