@@ -24,7 +24,7 @@ export const changeTableStatus = payload => ({payload, type: CHANGE_TABLE_STATUS
 /* thunk creators */
 export const getTablesDataFromAPI = () => {
   return (dispatch, getState) => {
-    dispatch(startGetTablesData());
+    //dispatch(startGetTablesData());
 
     Axios
       .get(`${api.url}/${api.tables}`)
@@ -84,13 +84,7 @@ export default function reducer(statePart = [], action = {}) {
     case CHANGE_TABLE_STATUS: {
       return {
         ...statePart,
-        data: {
-          ...statePart.data,
-          [action.payload.id]: {
-            ...statePart.data[action.payload.id],
-            status: action.payload.status,
-          },
-        },
+        data: statePart.data.map (order => order.id === action.payload.id ? {...order, status: action.payload.status } : order ),
       };
     }
     default:
